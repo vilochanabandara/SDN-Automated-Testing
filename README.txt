@@ -1,8 +1,4 @@
-SDN Assignment 2
-Group ID: [PUT YOUR GROUP ID HERE]
-Leader Reg No: [PUT LEADER REG NO HERE]
-Member 1 Reg No: [PUT REG NO HERE]
-Member 2 Reg No: [PUT REG NO HERE]
+SDN Project
 
 =========================
 EXECUTION INSTRUCTIONS
