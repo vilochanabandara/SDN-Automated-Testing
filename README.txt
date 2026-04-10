@@ -26,18 +26,12 @@ Important Note: Mininet requires a Linux environment to run.
    mininet> pingall
 5. Use `dpctl dump-flows` to take your flow screenshots.
 
-### Part B: Ryu Controller
-1. Close Mininet, run `sudo mn -c` to clear the network.
-2. Open a terminal and start Ryu:
-   ryu-manager AddRulesRyu.py
-3. Start the Mininet topology again. The rules will immediately be populated explicitly across all switches.
-
-### Part C: Floodlight Controller
+### Part B: Floodlight Controller
 1. Start your Floodlight Instance.
 2. Start the Mininet topology pointing to the Floodlight port (usually 6653).
 3. In a separate terminal, run the python script to push statically:
    python3 PartC_Controller/AddRulesFloodlight.py
 4. Validate in Mininet.
 
-### Part D: Performance Testing
+### Part C: Performance Testing
 Use the mininet `ping` and `iperf` commands manually across the 3 setups, take screenshots, and save performance data into the respective empty folders provided here.
