@@ -14,7 +14,7 @@ def push_flow(switch_dpid, priority, eth_type, match_fields, actions):
         "priority": str(priority),
         "eth_type": eth_type,
         "active": "true",
-        "instruction_apply_actions": actions # OpenFlow 1.3 usually, or just "actions" for OpenFlow 1.0
+        "actions": actions # OpenFlow 1.3 usually, or just "actions" for OpenFlow 1.0
     }
     
     # Adding OpenFlow 1.3 action compatibility just in case
