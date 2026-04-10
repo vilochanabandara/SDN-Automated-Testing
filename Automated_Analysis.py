@@ -4,6 +4,8 @@ import csv
 import time
 import subprocess
 import pandas as pd
+import matplotlib
+matplotlib.use('Agg') # Add this line before importing pyplot!
 import matplotlib.pyplot as plt
 import numpy as np
 from mininet.net import Mininet
@@ -76,7 +78,9 @@ def main():
     # ==========================================
     print("[*] Booting Mininet for direct scripting...")
     topo = Mytopo()
-    net1 = Mininet(topo=topo, controller=lambda name: RemoteController(name, ip='127.0.0.1', port=6653))
+# controller=None forces the switches to run in standalone mode 
+    # so they only listen to your AddRules.sh script!
+    net1 = Mininet(topo=topo, controller=None)
     net1.start()
     
     print("[*] Pushing Direct Rules via AddRules.sh...")
@@ -93,8 +97,10 @@ def main():
     # TEST 2: Floodlight (Part C)
     # ==========================================
     print("\n[*] Booting Floodlight Java Controller in background...")
-    floodlight_proc = subprocess.Popen(['java', '-jar', 'target/floodlight.jar'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    time.sleep(8) # Wait for Java server to fully bind
+    # Removed DEVNULL so we can see Java errors if it crashes!
+# We tell it to run from inside /root/floodlight/ so the relative paths work!
+    floodlight_proc = subprocess.Popen(['java', '-jar', 'target/floodlight.jar'], cwd='/root/floodlight')
+    time.sleep(20) # Increased to 20 seconds to give Java enough time to wake up
     
     print("[*] Booting Mininet for Floodlight connection...")
     net2 = Mininet(topo=topo, controller=lambda name: RemoteController(name, ip='127.0.0.1', port=6653))
