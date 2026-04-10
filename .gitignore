@@ -1,0 +1,21 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Java and Floodlight
+*.jar
+*.class
+target/
+bin/
+
+# Temporary data
+*.csv
+.DS_Store
+Performance_Data/
+Analysis_Results/
+Testing_Results/
+Screenshots/
+
+# Logs
+*.log
